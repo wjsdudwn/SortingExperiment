@@ -9,12 +9,13 @@ def isok(arr):
 
 
 print(os.getcwd())
-f = open(os.getcwd() + "/COMS experiment/nsqr/randomArr.txt", 'r')
+f = open(os.getcwd() + "/nsqr/randomArr.txt", 'r')
 data = f.read().split(' ')
 arr = []
 for i in range(10000):
     arr.append(int(data[i]))
 l = len(arr)
+
 # bubble
 
 print("bubble")
@@ -30,20 +31,47 @@ for i in range(l):
             arr[j+1] = temp
 
 print(time.time() - start)
-print(isok(arr))
 
-# # selection
+# reset array
+arr = []
+for i in range(10000):
+    arr.append(int(data[i]))
 
-# start = time.time()
+# selection
+print("selection")
+start = time.time()
+m = arr[0]
+c = 0
+for i in range(l):
+    m = arr[i]
+    c = i
+    for j in range(i+1, l):
+        if m > arr[j]:
+            m = arr[j]
+            c = j
+    temp = arr[i]
+    arr[i] = arr[c]
+    arr[c] = temp
+
+print(time.time() - start)
 
 
+# reset array
+arr = []
+for i in range(10000):
+    arr.append(int(data[i]))
 
-# print(result = time.time() - start)
+# insertion
 
-# # insertion
+print("insertion")
+start = time.time()
 
-# start = time.time()
-
-
-
-# print(result = time.time() - start)
+for i in range(1,l):
+    for j in range(i):
+        key = i - j
+        if arr[key-1] > arr[key]:
+            temp = arr[key-1]
+            arr[key-1] = arr[key]
+            arr[key] = temp
+            
+print(time.time() - start)
