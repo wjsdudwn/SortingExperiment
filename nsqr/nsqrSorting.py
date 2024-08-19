@@ -9,7 +9,7 @@ def isok(arr):
 
 
 print(os.getcwd())
-f = open(os.getcwd() + "/nsqr/randomArr.txt", 'r')
+f = open(os.getcwd() + "/randomArr.txt", 'r')
 data = f.read().split(' ')
 arr = []
 for i in range(10000):
@@ -33,11 +33,11 @@ for i in range(l):
 print(time.time() - start)
 
 # reset array
-arr = []
 for i in range(10000):
-    arr.append(int(data[i]))
+    arr[i] = int(data[i])
 
 # selection
+
 print("selection")
 start = time.time()
 m = arr[0]
@@ -56,22 +56,21 @@ for i in range(l):
 print(time.time() - start)
 
 
-# reset array
-arr = []
+# reset array]
 for i in range(10000):
-    arr.append(int(data[i]))
+    arr[i] = int(data[i])
 
 # insertion
 
 print("insertion")
 start = time.time()
 
-for i in range(1,l):
-    for j in range(i):
-        key = i - j
-        if arr[key-1] > arr[key]:
-            temp = arr[key-1]
-            arr[key-1] = arr[key]
-            arr[key] = temp
+for i in range(1, l):
+        key = arr[i]  
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
             
 print(time.time() - start)
