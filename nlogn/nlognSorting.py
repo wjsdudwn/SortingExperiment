@@ -16,10 +16,7 @@ def isok(arr):
             return False
     return True
 
-# 맥 vscode os 오류
-# 나중에 깃헙 올릴 때 o => os.getcwd로 바꾸기
-o = "/Users/jeon-yeongju/Desktop/workspace/COMS experiment/nlogn"
-f = open(o + "/LrandomArr.txt", 'r')
+f = open(os.getcwd() + "/LrandomArr.txt", 'r')
 data = f.read().split(' ')
 arr = []
 for i in range(1000000):
