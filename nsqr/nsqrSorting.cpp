@@ -91,7 +91,7 @@ int main() {
     }
     end = chrono::high_resolution_clock::now();
     res = end - start;
-    cout << "selection : " << res.count() << endl;
+    cout << "insertion : " << res.count() << endl;
 
     // ====================
 

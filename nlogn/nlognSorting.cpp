@@ -47,7 +47,7 @@ int main() {
     quick(arr, 0, 999999);
     end = chrono::high_resolution_clock::now();
     res = end - start;
-    cout << "quick : " << res.count();
+    cout << "quick : " << res.count() << endl;
 
     return 0;
 }
