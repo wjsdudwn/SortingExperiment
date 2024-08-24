@@ -8,7 +8,7 @@
 using namespace std;
 
 int isok(vector<int> arr);
-void quick(vector<int> &arr);
+void quick(vector<int> &arr, int low, int high);
 
 int main() {
     string data;
@@ -43,7 +43,11 @@ int main() {
     cout << "heap : " << res.count() << endl;
 
     // quick
-    
+    start = chrono::high_resolution_clock::now();
+    quick(arr, 0, 999999);
+    end = chrono::high_resolution_clock::now();
+    res = end - start;
+    cout << "quick : " << res.count();
 
     return 0;
 }
@@ -57,20 +61,34 @@ int isok(vector<int> arr) {
     return 1;
 }
 
-void quick(vector<int> &arr, int l, int r) {
-    int p = arr[0];
-    while (l+1 <= r) {
-        while(l+1 <= r && arr[l+1] <= p){
+void quick(vector<int> &arr, int low, int high) {
+    
+    if (low > high) {
+        return;
+    }
+
+    int pivot = arr[low];
+    int l = low + 1;
+    int r = high;
+
+    while (l <= r) {
+
+        while (l <= r && arr[l] <= pivot) {
             l++;
         }
-        while(r >= l+1 && arr[r] > p) {
-            r--
+
+        while (r >= l && arr[r] > pivot) {
+            r--;
         }
+
         if (l < r) {
-            swap(arr[l+1],arr[r]);
-        } 
+            swap(arr[l], arr[r]);
+        }
     }
-    swap(arr[l+1], arr[r]);
-    quick(arr, l+1, r-1);
-    quick(arr, r+1, )
+
+    swap(arr[low], arr[r]);
+
+    quick(arr, low, r - 1);
+    quick(arr, r + 1, high);
+    
 }
